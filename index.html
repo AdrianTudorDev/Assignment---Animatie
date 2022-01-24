@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment - Animatie</title>
+    <style>
+        section{
+            width: 500px;
+            height: 500px;
+            background: #050210;
+            margin: 10px auto;
+            padding: 0;
+        } 
+        .outer-circle{
+            position: relative;
+            width: 300px;
+            height: 300px;
+            left: 100px;
+            top: 100px;           
+            border-radius: 50%;
+            background: conic-gradient( #fb5dad 0 20%, 
+                                        #55fb9f 30% 40%, 
+                                        #b97aff 50% 75%, 
+                                        #55fb9f 80% 90%,
+                                        #fb5dad 100%);
+            animation: animationCircle 0.75s  linear infinite;  
+        }
+        .outer-circle::after{
+            content: "";
+            position: absolute;
+            right: 0;
+            left: 0;
+            top: 0;
+            bottom: 0;           
+            border-radius: 50%;
+            background: conic-gradient( #fb5dad 0 20%, 
+                                        #55fb9f 30% 40%, 
+                                        #b97aff 50% 75%, 
+                                        #55fb9f 80% 90%,
+                                        #fb5dad 100%);
+            filter: blur(50px);
+        }
+        @keyframes animationCircle {
+            0%{
+                transform: rotate(0);
+            }
+            100%{
+                transform: rotate(359deg);    
+            }
+        }
+
+        .inner-circle{
+            position: relative;
+            width: 260px;
+            height: 260px;
+            left: 20px;
+            top: 20px;           
+            border-radius: 50%;
+            background: #050210;
+            z-index: 10;                                   
+        }       
+        .growing-circle{
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            left: 129px;
+            top: 129px;           
+            border-radius: 50%;
+            background: #050210;
+            filter: brightness(4.5);
+            animation: animationGrow 1.3s ease-out infinite;            
+        }
+
+        @keyframes animationGrow{
+            0%{
+                transform: scale(0.1);
+                z-index: 20;
+            }
+            80%{
+                filter: brightness(3);
+                z-index: 12; 
+            }
+            100%{
+                transform: scale(130);
+                filter: brightness(2);
+                z-index: 12;    
+            }
+        }
+        .growing-circle2{
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            left: 129px;
+            top: 129px;           
+            border-radius: 50%;
+            background: #050210;
+            filter: brightness(4.5);
+            animation: animationGrow 1.3s ease-out infinite;
+            animation-delay: 0.8s;            
+        }
+        @keyframes animationGrow2{
+            0%{
+                transform: scale(0.1);
+                z-index: 20;
+            }
+            80%{
+                filter: brightness(3);
+                z-index: 12;  
+            }
+            100%{
+                transform: scale(130);
+                filter: brightness(2);
+                z-index: 12;     
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <section>
+        <div class="outer-circle">
+            <div class="inner-circle">
+                <div class="growing-circle"></div>
+                <div class="growing-circle2"></div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
